@@ -54,15 +54,17 @@ jobs:
 
       - name: Run Benchmarks
         run: >
-          hyperfine --warmup 20 --shell=none --export-markdown implementations.md
-          "$HOME/go/bin/godjot pandoc-manual.dj"
-          "djoths pandoc-manual.dj"
-          "djot pandoc-manual.dj"
-          "$HOME/.luarocks/bin/djot pandoc-manual.dj"
-          "jotdown pandoc-manual.dj"
+          hyperfine --warmup 20 --shell=none --export-markdown implementations.md --sort mean-time
+          --command-name Go "$HOME/go/bin/godjot pandoc-manual.dj"
+          --command-name Haskell "djoths pandoc-manual.dj"
+          --command-name JavaScript "djot pandoc-manual.dj"
+          --command-name Lua "$HOME/.luarocks/bin/djot pandoc-manual.dj"
+          --command-name Rust "jotdown pandoc-manual.dj"
 
       - name: Format Markdown File
         run: |
+          echo Time for parsing pandoc-manual.dj into html:
+          echo
           cat implementations.md
           echo
           echo "Running on $(lscpu | grep "Model name: [-|(|)| |a-z|A-Z|0-9]*" | sed -e 's/Model name: *//') at $(date --rfc-3339=seconds)  "

@@ -70,7 +70,7 @@ jobs:
           echo "Go djot $(ls $HOME/go/pkg/mod/github.com/sivukhin/)  "
           echo "$(ghc --version)  "
           echo "$(cabal --version)  "
-          echo "Haskell djot $(ls $HOME/.config/cabal/packages/hackage.haskell.org/djot/)  "
+          echo "Haskell djot UNKNOWN  "
           echo "npm version $(npm --version)  "
           echo "node version $(node --version)  "
           echo "JavaScript $(djot --version)  "

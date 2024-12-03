@@ -80,4 +80,4 @@ jobs:
           echo "$(cargo --version)  "
           echo "$(hyperfine --version)  "
           echo "Rust djot"
-          echo "$(jotdown --version)  "
+          jotdown --version
